@@ -8,6 +8,10 @@ predictions = trainer.predict(trainer.eval_dataset)
 y_pred = np.argmax(predictions.predictions, axis=1)
 y_true = predictions.label_ids
 
+acc = accuracy_score(y_true, y_pred)
+assert acc > 0.8, "Performance insuffisante"
+return {"accuracy": acc}
+
 print(classification_report(
     y_true,
     y_pred,
